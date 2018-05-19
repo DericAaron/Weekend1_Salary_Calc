@@ -1,0 +1,30 @@
+table, th, td {
+  border: 2px solid black;
+}
+th{
+  background-color: darkgray;
+  color: white;
+}
+
+tr:nth-of-type(odd){
+  background-color: lightblue;
+}
+
+table{
+  width: 100%;
+}
+
+header{
+  text-align: center;
+  background-color: darkgray;
+  color: white;
+}
+#salaryLine{
+  text-align: right;
+}
+.remove{
+  float: right;
+}
+#warningLine{
+  color: red;
+}
