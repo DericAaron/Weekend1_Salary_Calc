@@ -92,9 +92,9 @@ function removeRow(){
 function salaryCalc(){
   //set total to 0
   monthlyTot = 0;
-  //count the salaries of every employee in the array
+  //count the monthly salaries of every employee in the array
   for (employee of empArray){
-    monthlyTot += parseInt(employee.sal);
+    monthlyTot += parseInt(employee.sal)/12;
   }
   //empty the salary line
   $('#salaryLine').empty();
