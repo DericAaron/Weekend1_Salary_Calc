@@ -58,7 +58,7 @@ function addTable(){
     output += '<td>'+employee.ln+'</td>';
     output += '<td>'+employee.id+'</td>';
     output += '<td>'+employee.title+'</td>';
-    output += '<td>'+employee.sal+'<button class="remove btn btn-warning">Remove</button></td>';
+    output += '<td>'+employee.sal+'<button class="remove btn-warning">Remove</button></td>';
     //output += '<td><button class="remove">Remove</button></td>'
     output += '</tr>';
   }
@@ -71,6 +71,7 @@ function onReady(){
   addTable();
   salaryCalc();
   addEmployee();
+  $('#capSelection').change(salaryCalc);
 
   $(document).on('click', removeRow);
 }//end onReady
@@ -98,5 +99,17 @@ function salaryCalc(){
   //empty the salary line
   $('#salaryLine').empty();
   //append the salary total
-  $('#salaryLine').append('<h4>Total Monthly: $'+monthlyTot.toFixed(2)+'</h4>');
+  $('#salaryLine').append('<h4><span>Total Monthly: $'+monthlyTot.toFixed(2)+'</span></h4>');
+  updateTotalColor();
 }//end salaryCalc
+
+//function to update the background color of the monthly total
+function updateTotalColor(){
+  let cap = parseInt($('#capSelection').val());
+  if(monthlyTot > cap){
+    $('h4 span').css('background-color', 'red');
+  }//end make red
+  else{
+    $('h4 span').css('background', 'transparent');
+  }//end make transparent
+}//end epdateTotalColor

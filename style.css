@@ -20,10 +20,17 @@ header{
   background-color: gray;
   color: white;
   text-shadow: 0 0 5px lightblue;
+  border-bottom: 2px solid black;
+  box-shadow: 3px 3px darkgray;
 }
+
+#inputArea{
+  margin-top: 15px;
+}
+
 #salaryLine{
   text-align: right;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-right: 20%;
 }
 .remove{
