@@ -17,7 +17,7 @@ let empArray = [];
 let monthlyTot = 0;
 
 function addEmployee(){
-  $( '#addEmployeeButton' ).on('click', function(){
+
     if($('#firstIn').val() != '' && $('#lastIn').val() != '' && $('#idIn').val() != '' && $('#titleIn').val() != '' && $('#salaryIn').val() != ''){
       empArray.push(new Employee($('#firstIn').val(), $('#lastIn').val(), $('#idIn').val(), $('#titleIn').val(), $('#salaryIn').val()));
       salaryCalc();
@@ -36,7 +36,6 @@ function addEmployee(){
       //add a warning if any fields are empty
       $('#warningLine').append('<p>*Please fill in all fields</p>');
     }//end
-  });//end button function
 }//end add Employees
 
 function addTable(){
@@ -70,23 +69,24 @@ function addTable(){
 function onReady(){
   addTable();
   salaryCalc();
-  addEmployee();
-  $('#capSelection').change(salaryCalc);
+  $( '#addEmployeeButton' ).on('click', addEmployee);
+  $('#capSelection').on('change', updateTotalColor);
 
-  $(document).on('click', removeRow);
+  $('#tableArea').on('click','.remove', removeRow);
 }//end onReady
 
 function removeRow(){
-  $('#tableArea tr .remove').on('click', function(){
+
     //get the index of the row that the button is in
-    let index = parseInt(this.parentNode.parentNode.rowIndex);
+    const index = parseInt(this.parentNode.parentNode.rowIndex);
+    console.log(index);
     //remove this row from the array. need to tr index - 1 since the th counts as row 0
     empArray.splice(index - 1, 1);
     //display table with appended array
     addTable();
     //recalculate the salary line
     salaryCalc();
-  }); //end button function
+
 } //end remove row
 
 function salaryCalc(){
